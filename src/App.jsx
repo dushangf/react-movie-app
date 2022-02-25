@@ -11,6 +11,7 @@ const App = () => {
    const [year, setyear] = useState(0);
    const [sort, setsort] = useState('');
    const [genres, setgenres] = useState([]);
+   const [test, settest] = useState('');
 
    useEffect(() => {
       getGenre();
