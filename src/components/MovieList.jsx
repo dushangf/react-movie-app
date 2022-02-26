@@ -24,7 +24,7 @@ const MovieList = ({ movies, genres }) => {
             movies.map((movie) => (
                <div key={movie.id}>
                   <Modal
-                     className="bg-black/90 text-white pt-20"
+                     className="bg-black/90 text-white min-h-screen flex items-center"
                      isOpen={modalIsOpen}
                   >
                      <MovieDetails
