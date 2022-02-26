@@ -6,8 +6,17 @@ const MovieList = ({ movies, genres }) => {
    const [modalIsOpen, setmodalIsOpen] = useState(false);
    const imgURL = 'https://image.tmdb.org/t/p/w500';
    const [selected, setselected] = useState({});
+   const [selectedGenres, setselectedGenres] = useState([]);
 
    Modal.setAppElement('#root');
+
+   const selectMovie = (movie) => {
+      setselected(movie);
+      setselectedGenres(
+         genres.filter((genre) => movie.genre_ids.includes(Number(genre.id)))
+      );
+      setmodalIsOpen(true);
+   };
 
    return (
       <div className="flex flex-wrap p-5 justify-center">
@@ -15,7 +24,7 @@ const MovieList = ({ movies, genres }) => {
             movies.map((movie) => (
                <div key={movie.id}>
                   <Modal
-                     className="bg-black/90 text-white h-screen pt-20"
+                     className="bg-black/90 text-white pt-20"
                      isOpen={modalIsOpen}
                   >
                      <MovieDetails
@@ -23,14 +32,12 @@ const MovieList = ({ movies, genres }) => {
                         selected={selected}
                         imgURL={imgURL}
                         genres={genres}
+                        selectedGenres={selectedGenres}
                      />
                   </Modal>
                   <div
-                     onClick={() => {
-                        setselected(movie);
-                        setmodalIsOpen(true);
-                     }}
-                     className="w-40 bg-black text-white p-3 text-center shadow-indigo-900 shadow-md hover:scale-110 transtion duration-150 cursor-pointer h-72 overflow-hidden"
+                     onClick={() => selectMovie(movie)}
+                     className="w-40 bg-black text-white p-4 text-center shadow-white/50 shadow-md hover:scale-110 transtion duration-150 cursor-pointer h-72 overflow-hidden"
                   >
                      <img
                         src={imgURL + movie.poster_path}

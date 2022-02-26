@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaTimes, FaStar } from 'react-icons/fa';
 
-const MovieDetails = ({ setmodalIsOpen, selected, imgURL, genres }) => {
+const MovieDetails = ({ setmodalIsOpen, selected, imgURL, selectedGenres }) => {
    return (
       <div>
          <div className="bg-black w-4/5 mx-auto p-6 movie-modal flex flex-col items-end">
@@ -24,6 +24,12 @@ const MovieDetails = ({ setmodalIsOpen, selected, imgURL, genres }) => {
                      <FaStar className="text-yellow-600" />
                      {selected.vote_average}
                   </h3>
+                  <h4 className="flex mt-4 text-sm">
+                     {selectedGenres.map((genre) => (
+                        <p key={genre.id}>|&nbsp;{genre.name}&nbsp;</p>
+                     ))}
+                     |
+                  </h4>
                   <h3 className="text-lg font-semibold mt-4">Sypnosis</h3>
                   <p>{selected.overview}</p>
                </div>
