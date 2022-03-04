@@ -44,7 +44,9 @@ const MovieList = ({ movies, genres }) => {
                         alt="<image not found>"
                      />
                      <h4>{movie.title}</h4>
-                     <h5>{movie.release_date.split('-')[0]}</h5>
+                     <h5>
+                        {movie.release_date && movie.release_date.split('-')[0]}
+                     </h5>
                   </div>
                </div>
             ))}
