@@ -40,6 +40,7 @@ const App = () => {
          switch (sort) {
             default:
                setmovies(list);
+               break;
             case 'latest':
                setmovies(
                   list.sort((a, b) => {
