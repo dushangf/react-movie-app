@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FaTimes, FaStar } from 'react-icons/fa';
 
 const MovieDetails = ({ setmodalIsOpen, selected, imgURL, selectedGenres }) => {
